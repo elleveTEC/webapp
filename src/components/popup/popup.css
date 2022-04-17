@@ -1,0 +1,10 @@
+.form .popup {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 50%;
+  width: 45%;
+  background-color: blue;
+  color: white;
+}
