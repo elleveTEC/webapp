@@ -32,7 +32,7 @@ export default function Form() {
         <input id="description" type="text" name="description" />
         <input id="myButton" type="submit" value="Calcular esfuerzo" onClick={toggleModal} />
       </form>
-      {state.active ? <Popup /> : ""}
+      {state.active ? <Popup correct={true} toggleModal={toggleModal} /> : ""}
     </div>
   );
 }

@@ -1,10 +1,38 @@
-.form .popup {
+.popup {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.popup .popup-main {
   position: absolute;
   top: 50%;
   right: 50%;
   transform: translate(50%, -50%);
   height: 50%;
   width: 45%;
-  background-color: blue;
+  background-color: white;
+}
+
+.popup .popup-main .icon {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  max-height: 20%;
+  width: auto;
+}
+
+.popup .popup-main .result {
+  margin-bottom: 5%;
+}
+
+.popup .popup-main .ok {
+  height: 10%;
+  width: 10%;
+  background-color: #02A4FF;
+  border-radius: 5px;
   color: white;
+  border: none;
 }
