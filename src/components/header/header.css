@@ -1,0 +1,15 @@
+.top-bar {
+  width: 100%;
+  height: 75px;
+  background-color: #002a5a;
+  position: relative;
+}
+
+.top-bar .logo {
+  max-height: 50px;
+  width: auto;
+  transform: translate(0, -50%);
+  position: absolute;
+  left: 2.5%;
+  top: 50%;
+}
