@@ -1,15 +1,23 @@
-.top-bar {
+.header {
   width: 100%;
-  height: 75px;
+  height: 90px;
   background-color: #002a5a;
   position: relative;
 }
 
-.top-bar .logo {
+.header .logo {
   max-height: 50px;
   width: auto;
   transform: translate(0, -50%);
   position: absolute;
   left: 2.5%;
   top: 50%;
+}
+
+.header .red-line {
+  width: 100%;
+  height: 4px;
+  background-color: red;
+  position: absolute;
+  bottom: -4px;
 }
