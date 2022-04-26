@@ -7,8 +7,15 @@ import "./form.css";
 import Popup from "../popup/popup.jsx";
 
 export default function Form() {
+
+  const [state, setState] = useState({
+    summaryLength: 0,
+    descriptionLength: 0,
+  });
+
   // const active = useSelector(state => state.opener.active);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const myButton = document.getElementById("myButton");
 
@@ -17,10 +24,18 @@ export default function Form() {
     });
   }, []);
 
-  const [state, setState] = useState({
-    summaryLength: 0,
-    descriptionLength: 0,
-  });
+  useEffect(() => {
+    const btn = document.getElementById("myButton");
+
+    if (state.summaryLength >= 10 && state.descriptionLength >= 10) {
+      btn.style.backgroundColor = "#3FA9F5";
+      btn.disabled = false;
+    }
+    else {
+      btn.style.backgroundColor = "";
+      btn.disabled = true;
+    }
+  }, [state]);
 
   const toggleModal = () => {
     dispatch(toggle());
@@ -33,14 +48,6 @@ export default function Form() {
     setState({
       ...state, [textarea]: content.length,
     });
-
-    const btn = document.getElementById("myButton");
-    if (state.summaryLength >= 10 && state.descriptionLength >= 10) {
-      btn.style.backgroundColor = "#3FA9F5";
-    }
-    else {
-      btn.style.backgroundColor = "";
-    }
   }
 
   return (
