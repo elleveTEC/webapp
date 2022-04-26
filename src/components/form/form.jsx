@@ -26,10 +26,10 @@ export default function Form() {
 
   const handleChange = (e) => {
     const content = e.target.value;
-    const value = `${e.target.name}Length`; 
+    const textarea = `${e.target.name}Length`; 
 
     setState({
-      ...state, [value]: content.length,
+      ...state, [textarea]: content.length,
     });
 
     const btn = document.getElementById("myButton");
@@ -46,9 +46,9 @@ export default function Form() {
       <h1>Calculo de esfuerzo</h1>
       <form className="main-form" action="">
         <label htmlFor="summary">Resumen de historia de usuario</label>
-        <input id="summary" type="text" name="summary" onChange={handleChange}/>
+        <textarea id="summary" type="text" name="summary" onChange={handleChange}/>
         <label htmlFor="description">Descripcion de historia de usuario</label>
-        <input id="description" type="text" name="description" onChange={handleChange}/>
+        <textarea id="description" type="text" name="description" onChange={handleChange}/>
         <input id="myButton" type="submit" value="Calcular esfuerzo" onClick={toggleModal} />
       </form>
       {state.active ? <Popup correct={true} toggleModal={toggleModal} /> : ""}

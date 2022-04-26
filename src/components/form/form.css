@@ -19,12 +19,14 @@
   width: 100%;
 }
 
-.main-form input {
+.main-form textarea {
   width: 100%; 
   height: 75px;
   margin-bottom: 50px;
   border: 1px solid #C3C3C3;
   border-radius: 4px;
+  font-family: 'Roboto';
+  font-size: 1em;
 }
 
 .main-form label {
@@ -32,6 +34,7 @@
   left: -50%;
   transform: translate(50%, 0);
   margin-bottom: 10px;
+  font-size: 1.2em;
 }
 
 .main-form input[type="submit"] {
@@ -40,6 +43,7 @@
   position: relative;
   left: 42.5%;
   background-color: #D0D0D7;
+  border: 1px solid #C3C3C3;
   color: white;
   font-weight: 700;
   font-size: 1em;
