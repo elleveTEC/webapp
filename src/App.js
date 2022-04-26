@@ -1,7 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import TopBar from "./components/header/header.jsx";
-import Form from "./components/form/form.jsx";
+import Router from "./Router.js";
 import Popup from "./components/popup/popup.jsx";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -12,8 +11,7 @@ function App() {
   return (
     <>
       <div className="App">
-        <TopBar />
-        <Form />
+        <Router />
       </div>
       {active ? <Popup correct={true} /> : ""}
     </>

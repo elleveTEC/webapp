@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import  { toggle } from "../../features/opener/openerSlice";
 
 import "./form.css";
