@@ -1,9 +1,14 @@
 import { React, useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import  { toggle } from "../../features/opener/openerSlice";
+
 import "./form.css";
 
 import Popup from "../popup/popup.jsx";
 
 export default function Form() {
+  // const active = useSelector(state => state.opener.active);
+  const dispatch = useDispatch();
   useEffect(() => {
     const myButton = document.getElementById("myButton");
 
@@ -13,15 +18,12 @@ export default function Form() {
   }, []);
 
   const [state, setState] = useState({
-    active: false,
     summaryLength: 0,
     descriptionLength: 0,
   });
 
   const toggleModal = () => {
-    setState((state) => ({
-      ...state, active: !state.active, 
-    }));
+    dispatch(toggle());
   };
 
   const handleChange = (e) => {
@@ -51,7 +53,6 @@ export default function Form() {
         <textarea id="description" type="text" name="description" onChange={handleChange}/>
         <input id="myButton" type="submit" value="Calcular esfuerzo" onClick={toggleModal} />
       </form>
-      {state.active ? <Popup correct={true} toggleModal={toggleModal} /> : ""}
     </div>
   );
 }

@@ -1,9 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import  { toggle } from "../../features/opener/openerSlice";
 import "./popup.css";
 
 export default function Popup(props) {
-  const { correct, toggleModal } = props;
-  
+  const { correct } = props;
+
+  const dispatch = useDispatch();
+
+  const toggleModal = () => {
+    dispatch(toggle());
+  };
+
   return (
     <div className="popup">
       <div className="popup-main">
