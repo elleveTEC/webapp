@@ -1,0 +1,43 @@
+.login-page {
+  display: flex;
+  height: 100vh;
+}
+
+.login-page .left-side {
+  flex: 1 1 60%;
+  /* background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), rgba(0, 42, 89, 0.75); */
+  background-image: url("/public/images/login.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
+  color: white;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  align-items: left;
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+.login-page .left-side .subtitle {
+  font-weight: lighter;
+}
+
+.login-page .left-side .icon {
+  height: auto;
+  width: 10%;
+}
+
+.login-page .left-side ul li {
+  list-style: none;
+}
+
+.login-page .right-side {
+  flex: 1 1 30%;
+  height: 100vh;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  align-items: center;
+}
