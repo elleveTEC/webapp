@@ -5,10 +5,64 @@
   transform: translate(0, -50%);
   height: 55px;
   width: 55px;
-  font-size: 100%;
+  font-size: 1.5rem;
   background-color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.profile-button .pop-up {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  background-color: white;
+  box-shadow: 0px 10px 20px 0px #00000026;
+  height: fit-content;
+  width: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: wrap column;
+}
+
+.profile-button .pop-up .initials {
+  flex: 0 0 55px;
+  width: 55px;
+  font-size: 1.5rem;
+  background-color: #001B3A;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0 0 0;
+}
+
+.profile-button .pop-up .data {
+  margin: 10px 0;
+}
+
+.profile-button .pop-up .data p {
+  /* flex: 2 2 fit-content; */
+  font-size: 1rem;
+  margin: 0;
+  text-align: center;
+}
+
+.profile-button .pop-up .data .name {
+  font-weight: bold;
+}
+
+.profile-button .pop-up button {
+  /* flex: 1 1 fit-content; */
+  border: none;
+  background-color: white;
+  border-top: solid 1px #D0D0D7;
+  width: 100%;
+  color: #3FA9F5;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 10px;
 }
