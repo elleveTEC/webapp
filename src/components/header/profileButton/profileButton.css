@@ -1,0 +1,14 @@
+.profile-button {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 55px;
+  width: 55px;
+  font-size: 100%;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
