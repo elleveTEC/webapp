@@ -52,13 +52,13 @@ export default function Form() {
 
   return (
     <div className="form">
-      <h1>Calculo de esfuerzo</h1>
+      <h1>Effort Estimation Calculation</h1>
       <form className="main-form" action="">
-        <label htmlFor="summary">Resumen de historia de usuario</label>
-        <textarea id="summary" type="text" name="summary" onChange={handleChange}/>
-        <label htmlFor="description">Descripcion de historia de usuario</label>
-        <textarea id="description" type="text" name="description" onChange={handleChange}/>
-        <input id="myButton" type="submit" value="Calcular esfuerzo" onClick={toggleModal} />
+        <label htmlFor="summary">User story summary</label>
+        <textarea id="summary" type="text" name="summary" placeholder="Summary" onChange={handleChange}/>
+        <label htmlFor="description">User story description</label>
+        <textarea id="description" type="text" name="description" placeholder="Description" onChange={handleChange}/>
+        <input id="myButton" type="submit" value="Calculate" onClick={toggleModal} />
       </form>
     </div>
   );
