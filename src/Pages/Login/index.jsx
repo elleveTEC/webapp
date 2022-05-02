@@ -7,7 +7,7 @@ export default function LoginPage() {
     <div className="login-page">
       <div className="left-side">
         <img className="icon" src="/images/login-icon.svg" alt="icon" />
-        <h1 className="title">Innovating the way you build</h1>
+        <h1 className="title">Innovating the way you work</h1>
         <h2 className="subtitle">Optimize the scheduling of your activities and projects</h2>
         {/*<ul>
           <li>Explore our product portfolio and place your order instantly</li>
