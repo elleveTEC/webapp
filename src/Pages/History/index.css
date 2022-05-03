@@ -1,0 +1,12 @@
+.history {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history h1 {
+
+}
