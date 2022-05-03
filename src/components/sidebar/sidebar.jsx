@@ -10,7 +10,7 @@ export default function Sidebar(props) {
       <a href="/">
         <MaterialIcon icon="calculate" size="large" color={ active == "calculate" ? "#003876" : ""}/>
       </a>
-      <a href="/login">
+      <a href="/history">
         <MaterialIcon icon="history" size="large" color={ active == "history" ? "#003876" : ""}/>
       </a>
     </div>
