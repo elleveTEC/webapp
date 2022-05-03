@@ -1,14 +1,15 @@
-.login-form-wrapper {
+.login-form-wrapper, .forgot {
   width: 60%;
 } 
 
 .login-form-wrapper .login-form {
   display: flex;
   flex-flow: wrap column;
+  position: relative;
 }
 
 
-.login-form-wrapper .login-form input{
+.login-form-wrapper .login-form input {
   border: 2px solid #D0D0D7;
   height: 40px;
   border-radius: 5px;
@@ -29,9 +30,10 @@
   border: none;
   font-weight: 700;
   font-size: 1rem;
+  cursor: pointer;
 }
 
-.login-form-wrapper .red-line {
+.red-line {
   height: 2px;
   width: 100%;
   background-color: #EE3D42;
@@ -48,3 +50,23 @@
 .login-form-wrapper .login-form label {
   margin-bottom: 5px;
 } 
+
+.forgot {
+  position: relative;
+}
+
+#forgot-password {
+  color: #3FA9F5;
+  position: absolute;
+  bottom: 0;
+  cursor: pointer;
+}
+
+#go-back {
+  color: #3FA9F5;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  transform: translateY(200%);
+  cursor: pointer;
+}
