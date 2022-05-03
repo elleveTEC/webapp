@@ -1,12 +1,23 @@
 .history {
   width: 80%;
-  margin: auto;
+  margin: 50px auto;
   display: flex;
   flex-flow: wrap row;
   justify-content: space-between;
   align-items: center;
 }
 
-.history h1 {
+.history #search {
+  height: 30px;
+  border: solid 2px #d0d0d7;
+  border-radius: 3px;
+  width: 30%;
+  background: url("http://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left no-repeat;
+}
 
+.history h1 {
+}
+
+.history button {
+  width: 10%;
 }
