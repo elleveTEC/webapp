@@ -16,9 +16,9 @@ export default function LoginForm() {
           <div className="red-line"></div>
           <h3>Log in</h3>
           <form className="login-form" action="">
-            <label forHtml="username">User</label>
+            <label html="username">User</label>
             <input type="text" id="username" name="username" placeholder="Enter your username" />
-            <label forHtml="password">Password</label>
+            <label html="password">Password</label>
             <input
               type="password"
               id="password"
