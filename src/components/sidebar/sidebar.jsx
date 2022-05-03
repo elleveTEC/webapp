@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Link } from "react-router-dom"
 import MaterialIcon, { colorPalette } from "material-icons-react";
 import "./sidebar.css";
 
@@ -7,12 +8,12 @@ export default function Sidebar(props) {
 
   return (
     <div className="sidebar">
-      <a href="/">
+      <Link to="/">
         <MaterialIcon icon="calculate" size="large" color={ active == "calculate" ? "#003876" : ""}/>
-      </a>
-      <a href="/history">
+      </Link>
+      <Link to="/history">
         <MaterialIcon icon="history" size="large" color={ active == "history" ? "#003876" : ""}/>
-      </a>
+      </Link>
     </div>
   );
 }
