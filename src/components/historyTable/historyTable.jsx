@@ -7,7 +7,7 @@ export default function HistoryTable(props) {
   const rows = stories.map((story, key) => {
     return (
       <tr key={key.toString()}>
-        <td>{story.id}</td>
+        <td>#{story.id}</td>
         <td>{story.task}</td>
         <td>{story.startDate}</td>
         <td>{story.estimated}</td>

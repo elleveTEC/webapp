@@ -7,19 +7,19 @@ export default function History() {
   const stories = [
     {
       id: "1509",
-      task: "some task",
+      task: "Task name",
       startDate: "03/05/2022",
       estimated: 3,
     },
     {
       id: "1509",
-      task: "some task",
+      task: "Task name",
       startDate: "03/05/2022",
       estimated: 3,
     },
     {
       id: "1509",
-      task: "some task",
+      task: "Task name",
       startDate: "03/05/2022",
       estimated: 3,
     },
