@@ -15,3 +15,7 @@
 .sidebar .material-icons {
   margin: 10px;
 }
+
+.sidbar a {
+  text-decoration: none;
+}
