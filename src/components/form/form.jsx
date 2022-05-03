@@ -51,7 +51,7 @@ export default function Form() {
 
   return (
     <div className="form">
-      <h1>Effor prediction</h1>
+      <h1>Effort prediction</h1>
       <form className="main-form" action="">
         <div className="row">
           <div className="col">

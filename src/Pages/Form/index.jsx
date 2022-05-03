@@ -7,7 +7,7 @@ export default function Form() {
   return (
     <div>
       <TopBar />
-      <Sidebar />
+      <Sidebar active="calculate" />
       <MainForm />
     </div>
   );
