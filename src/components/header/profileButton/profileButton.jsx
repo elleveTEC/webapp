@@ -18,8 +18,8 @@ export default function ProfileButton() {
             <p className="name">Name Surname</p>
             <p className="email">user@cemex.com</p>
           </div>
-          <button>Edit profile</button>
-          <button>Log out</button>
+          <button>Account settings</button>
+          <button>Sign out</button>
         </div>
       ) : (
         ""
