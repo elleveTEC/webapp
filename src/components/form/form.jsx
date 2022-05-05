@@ -55,7 +55,7 @@ export default function Form() {
       <form className="main-form" action="">
         <div className="row">
           <div className="col">
-            <label htmlFor="story-name">Name of the task</label>
+            <label htmlFor="story-name">Task name</label>
             <input type="text" id="story-name" name="story-name" placeholder="Name of the story" />
           </div>
           <div className="col">
