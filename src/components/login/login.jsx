@@ -26,7 +26,7 @@ export default function LoginForm() {
               placeholder="Enter your password"
             />
             <p id="forgot-password" onClick={handleClick}>
-              Forgot password?
+              Forgot your password?
             </p>
             <input type="submit" value="Log In" />
           </form>
