@@ -1,10 +1,21 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggle } from "../../features/opener/openerSlice";
+import * as tf from "@tensorflow/tfjs";
 
 import "./form.css";
 
 import Popup from "../popup/popup.jsx";
+
+var modelo = null;
+const dict = new Map();
+const del_words = ['in', 'the', 'a','to', 'from', 'be', 'on', 'an', 'as', 'of', 'is', 'it', 'that', 'this', 'or', 'and', 'I', 'he', 'she', 'they', 'them', 'us'];
+
+(async () => {
+  console.log("Cargando modelo...");
+  modelo = await tf.loadLayersModel("http://127.0.0.1:8080/model.json");
+  console.log("Modelo cargado...");
+})();
 
 function getSQLDate(date) {
   var pad = function (num) {
@@ -50,6 +61,7 @@ async function postData(url = "", data = {}) {
 }
 
 export default function Form() {
+    
   const [state, setState] = useState({
     UsuarioID: localStorage.getItem("UsuarioID"),
     Fecha_Calculo: getSQLDate(Date.now()),
@@ -68,7 +80,35 @@ export default function Form() {
     const myButton = document.getElementById("myButton");
 
     myButton.addEventListener("click", (e) => {
-      // e.preventDefault();
+      function processToken(text){
+        const token = [];
+        const array = text.match(/\w+/g);
+        for(var i = 0; i < del_words.length; i++){
+          while (array.includes(del_words[i])){
+            const idx = array.indexOf(del_words[i]);
+            array.splice(idx,1);
+          }
+        }
+        for(var i = 0; i < array.length; i++){
+          if (!dict.has(array[i])){
+            dict.set(array[i], dict.size + 1);
+          }
+          token[i] = dict.get(array[i]);
+        }
+        return token;
+      }
+
+      function top_words(tokens, words){
+        for(var i = 0; i < tokens.length; i++){
+          
+        }
+      }
+
+      const sum = document.getElementById("summary").value.toLowerCase();
+      const desc = document.getElementById("description").value.toLowerCase();
+      const sum_token = processToken(sum);
+      const desc_token = processToken(desc);
+      e.preventDefault();
     });
   }, []);
 
