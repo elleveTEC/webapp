@@ -6,7 +6,20 @@ import "./form.css";
 
 import Popup from "../popup/popup.jsx";
 
+import * as tf from "@tensorflow/tfjs";
+
+var modelo = null;
+const dict = new Map();
+const del_words = ['in', 'the', 'a','to', 'from', 'be', 'on', 'an', 'as', 'of', 'is', 'it', 'that', 'this', 'or', 'and', 'I', 'he', 'she', 'they', 'them', 'us'];
+
+(async () => {
+  console.log("Cargando modelo...");
+  modelo = await tf.loadLayersModel("http://127.0.0.1:8080/model.json");
+  console.log("Modelo cargado...");
+})();
+
 export default function Form() {
+    
   const [state, setState] = useState({
     summaryLength: 0,
     descriptionLength: 0,
@@ -19,6 +32,34 @@ export default function Form() {
     const myButton = document.getElementById("myButton");
 
     myButton.addEventListener("click", (e) => {
+      function processToken(text){
+        const token = [];
+        const array = text.match(/\w+/g);
+        for(var i = 0; i < del_words.length; i++){
+          while (array.includes(del_words[i])){
+            const idx = array.indexOf(del_words[i]);
+            array.splice(idx,1);
+          }
+        }
+        for(var i = 0; i < array.length; i++){
+          if (!dict.has(array[i])){
+            dict.set(array[i], dict.size + 1);
+          }
+          token[i] = dict.get(array[i]);
+        }
+        return token;
+      }
+
+      function top_words(tokens, words){
+        for(var i = 0; i < tokens.length; i++){
+          
+        }
+      }
+
+      const sum = document.getElementById("summary").value.toLowerCase();
+      const desc = document.getElementById("description").value.toLowerCase();
+      const sum_token = processToken(sum);
+      const desc_token = processToken(desc);
       e.preventDefault();
     });
   }, []);
