@@ -14,7 +14,6 @@ export default function History() {
       try {
         const response = await fetch(`/getRecordUser/${id}`);
         const data = await response.json();
-        console.log(data);
         setStories(data);
       } catch (error) {
         console.error(error);
