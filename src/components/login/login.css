@@ -8,6 +8,10 @@
   position: relative;
 }
 
+.login-form-wrapper .failed {
+  background-color: red;
+  color: white;
+}
 
 .login-form-wrapper .login-form input {
   border: 2px solid #D0D0D7;
