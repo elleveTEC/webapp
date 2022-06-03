@@ -59,11 +59,11 @@ export default function LoginForm() {
         Correo: state.username,
         Contrasena: state.password,
       });
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
     if (response != null) {
+      localStorage.setItem('UsuarioID', response[0].UsuarioID);
       window.location.href = "/";
     } else {
       setFailed(true);
