@@ -1,15 +1,19 @@
 .sidebar {
   background-color: white;
   border-right: 1px solid #D0D0D7; 
-  height: calc(100vh - 94px);
+  height: 100%;
   width: 100px;
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 0;
+  float: left;
   display: flex;
   flex-flow: wrap column;
   justify-content: center;
   align-items: center;
+  overflow-y: auto;
+  overflow-x: auto;
+  z-index: -1;
 }
 
 .sidebar .material-icons {

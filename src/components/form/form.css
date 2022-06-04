@@ -1,11 +1,12 @@
 .form {
   width: 60%;
+
   margin: 0 auto;
 }
 
 .form h1 {
   text-align: left;
-  margin: 80px 0;
+  margin: 150px 0 20px 0;
   /* color: #004EA5;  */
   font-size: 50px;
   font-weight: 700;
@@ -14,24 +15,30 @@
 .main-form {
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-direction: column;
   width: 100%;
 }
 
 .main-form .row {
   width: 100%;
+  margin-bottom: 20px;
+}
+
+.main-form .row-dual {
+  width: 100%;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
 }
+
 
 .main-form textarea {
-  padding: 10px;
   width: 100%; 
-  margin-bottom: 50px;
 }
 
-.main-form .row .col {
+
+.main-form .row-dual .col-dual {
   flex: 0 0 45%;
   /* width: 50%; */
   display: flex;
@@ -44,6 +51,11 @@
   font-family: 'Roboto';
   font-size: 1em;
   resize: vertical;
+  padding: 5px;
+}
+
+.main-form input[type="text"], .main-form textarea[type="text"]  {
+  padding: 10px;
 }
 
 #summary {
@@ -56,10 +68,18 @@
   max-height: 40vh;
 }
 
+input[type="date"]:invalid::-webkit-datetime-edit {
+  color: #6d6d6d;
+}
+#starting-date{
+  padding: 10px;
+  color:black
+}
+
 .main-form textarea {
   height: 75px;
   width: 100%; 
-  margin-bottom: 50px;
+  margin: 10px 0px 0px;
 }
 
 .main-form input {
@@ -78,15 +98,13 @@
 }
 
 .main-form input[type="submit"] {
-  flex: 1 1 35px;
-  width: 15%;
-  position: relative;
-  left: 42.5%;
+  flex: 0 0 35px;
+  width: 20%;
   background-color: #D0D0D7;
   border: 1px solid #C3C3C3;
   color: white;
   font-weight: 700;
-  font-size: 1em;
+  font-size: em;
 }
 
 
