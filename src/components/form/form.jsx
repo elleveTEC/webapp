@@ -125,8 +125,8 @@ export default function Form() {
     <div className="form">
       <h1>Effort prediction</h1>
       <form className="main-form" onSubmit={handleSubmit}>
-        <div className="row">
-          <div className="col">
+        <div className="row-dual">
+          <div className="col-dual">
             <label htmlFor="story-name">Task name</label>
             <input
               type="text"
@@ -136,11 +136,13 @@ export default function Form() {
               placeholder="Name of the story"
             />
           </div>
-          <div className="col">
+          <div className="col-dual">
             <label htmlFor="starting-date">Starting date</label>
-            <input type="date" id="starting-date" name="starting-date" onChange={handleDate} />
+            <input type="date" id="starting-date" name="starting-date" onChange={handleDate} required/>
           </div>
         </div>
+        <div className="row">
+        <div className="col">
         <label htmlFor="summary">User story summary</label>
         <textarea
           id="summary"
@@ -149,6 +151,10 @@ export default function Form() {
           placeholder="Summary"
           onChange={handleSummary}
         />
+        </div>
+        </div>
+        <div className="row">
+        <div className="col">
         <label htmlFor="description">User story description</label>
         <textarea
           id="description"
@@ -157,8 +163,11 @@ export default function Form() {
           placeholder="Description"
           onChange={handleDescription}
         />
+        
+        </div>
+        </div>
         <input id="myButton" type="submit" value="Calculate" onClick={toggleModal} />
-        <input type="submit" value="Log In" />
+        
       </form>
     </div>
   );

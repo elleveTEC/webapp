@@ -1,8 +1,9 @@
 .header {
-  width: 100%;
+  width: 101%;
   height: 90px;
+  margin-top: -150px;
   background-color: #002a5a;
-  position: relative;
+  position: fixed;
 }
 
 .header .logo {
