@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggle } from "../../features/opener/openerSlice";
+import { toggle, setMessage } from "../../features/opener/openerSlice";
 import * as tf from "@tensorflow/tfjs";
 
 import "./form.css";
@@ -120,34 +120,17 @@ function top_words(tokens, words) {
   }
 }
 
-function getPrediction() {
-  const sum = document.getElementById("summary").value.toLowerCase();
-  const desc = document.getElementById("description").value.toLowerCase();
-  var sum_token = processToken(sum);
-  var desc_token = processToken(desc);
-  sum_token = top_words(sum_token, 5);
-  desc_token = top_words(desc_token, 20);
-  const predict_token = sum_token.concat(desc_token);
-
-  if (modelo != null) {
-    var tensor = tf.tensor2d([predict_token]);
-    var prediccion = modelo.predict(tensor).dataSync();
-    prediccion = Math.round(prediccion);
-    console.log(prediccion);
-  }
-}
-
-function processToken(text){
+function processToken(text) {
   var token = [];
   const array = text.match(/\w+/g);
-  for(var i = 0; i < del_words.length; i++){
-    while (array.includes(del_words[i])){
+  for (var i = 0; i < del_words.length; i++) {
+    while (array.includes(del_words[i])) {
       const idx = array.indexOf(del_words[i]);
-      array.splice(idx,1);
+      array.splice(idx, 1);
     }
   }
-  for(var i = 0; i < array.length; i++){
-    if (!dict.has(array[i])){
+  for (var i = 0; i < array.length; i++) {
+    if (!dict.has(array[i])) {
       dict.set(array[i], dict.size + 1);
     }
     token[i] = dict.get(array[i]);
@@ -156,7 +139,6 @@ function processToken(text){
 }
 
 export default function Form() {
-    
   const [state, setState] = useState({
     UsuarioID: localStorage.getItem("UsuarioID"),
     Fecha_Calculo: getSQLDate(Date.now()),
@@ -228,6 +210,36 @@ export default function Form() {
     event.preventDefault();
     postData("/createRecord", state);
   };
+
+  function getPrediction() {
+    const sum = document.getElementById("summary").value.toLowerCase();
+    const desc = document.getElementById("description").value.toLowerCase();
+    var sum_token = processToken(sum);
+    var desc_token = processToken(desc);
+    sum_token = top_words(sum_token, 5);
+    desc_token = top_words(desc_token, 20);
+    const predict_token = sum_token.concat(desc_token);
+
+    if (modelo != null) {
+      var tensor = tf.tensor2d([predict_token]);
+      var prediccion = modelo.predict(tensor).dataSync();
+      prediccion = Math.round(prediccion);
+      // console.log(prediccion);
+      dispatch(
+        setMessage({
+          message: "Estimated time: " + prediccion + " days",
+          correct: true,
+        })
+      );
+    } else {
+      dispatch(
+        setMessage({
+          message: "Prediction model not found",
+          correct: false,
+        })
+      );
+    }
+  }
 
   return (
     <div className="form">

@@ -7,13 +7,13 @@ import { useSelector, useDispatch } from "react-redux";
 function App() {
 
   const active = useSelector(state => state.opener.active);
-  const dispatch = useDispatch();
+
   return (
     <>
       <div className="App">
         <Router />
       </div>
-      {active ? <Popup correct={true} /> : ""}
+      {active ? <Popup /> : ""}
     </>
   );
 }
