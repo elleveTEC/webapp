@@ -81,24 +81,6 @@ async function postData(url = "", data = {}) {
   }
 }
 
-function processToken(text) {
-  var token = [];
-  const array = text.match(/\w+/g);
-  for (var i = 0; i < del_words.length; i++) {
-    while (array.includes(del_words[i])) {
-      const idx = array.indexOf(del_words[i]);
-      array.splice(idx, 1);
-    }
-  }
-  for (var i = 0; i < array.length; i++) {
-    if (!dict.has(array[i])) {
-      dict.set(array[i], dict.size + 1);
-    }
-    token[i] = dict.get(array[i]);
-  }
-  return token;
-}
-
 function top_words(tokens, words) {
   var valores = [];
   var conteos = [];
@@ -155,7 +137,26 @@ function getPrediction() {
   }
 }
 
+function processToken(text){
+  var token = [];
+  const array = text.match(/\w+/g);
+  for(var i = 0; i < del_words.length; i++){
+    while (array.includes(del_words[i])){
+      const idx = array.indexOf(del_words[i]);
+      array.splice(idx,1);
+    }
+  }
+  for(var i = 0; i < array.length; i++){
+    if (!dict.has(array[i])){
+      dict.set(array[i], dict.size + 1);
+    }
+    token[i] = dict.get(array[i]);
+  }
+  return token;
+}
+
 export default function Form() {
+    
   const [state, setState] = useState({
     UsuarioID: localStorage.getItem("UsuarioID"),
     Fecha_Calculo: getSQLDate(Date.now()),
