@@ -192,8 +192,24 @@ export default function Form() {
     }
   }, [state]);
 
-  const toggleModal = () => {
+  const handleClick = () => {
     dispatch(toggle());
+    async function makePredict() {
+      const id = localStorage.getItem("UsuarioID");
+      try {
+          const response = await postData('/prediccion',{
+            Sum: state.Resumen,
+            Desc: state.Descripcion,
+          })
+      
+          const prediccion = response.prediccion.prediccion;
+          console.log(prediccion);
+
+        } catch (error){
+          console.log(error);
+        }
+    }
+    makePredict();
   };
 
   const handleName = (e) => {
@@ -279,7 +295,7 @@ export default function Form() {
             />
           </div>
         </div>
-        <input id="myButton" type="submit" value="Calculate" onClick={toggleModal} />
+        <input id="myButton" type="submit" value="Calculate" onClick={handleClick} />
       </form>
     </div>
   );
