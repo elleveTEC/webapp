@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toggle } from "../../features/opener/openerSlice";
+import { toggle, setChildren } from "../../features/opener/openerSlice";
 import * as tf from "@tensorflow/tfjs";
 
 import "./form.css";
@@ -75,9 +75,7 @@ async function postData(url = "", data = {}) {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     return response.json(); // parses JSON response into native JavaScript objects
-  } catch (error) {
-    console.error(error);
-    return null;
+  } finally {
   }
 }
 
@@ -165,7 +163,12 @@ export default function Form() {
     }
   }, [state]);
 
-  const handleClick = () => {
+  const handleClick = async (event) => {
+
+    event.preventDefault();
+    let correct = true;
+    let message = "";
+
     async function makePredict() {
       const id = localStorage.getItem("UsuarioID");
       try {
@@ -173,10 +176,13 @@ export default function Form() {
           Sum: state.Resumen,
           Desc: state.Descripcion,
         });
-        const prediccion = response.prediccion.prediccion;
-        console.log(prediccion);
+        const prediction = response.prediccion.prediccion;
+        console.log(prediction);
+        message = "Estimated time: " + prediction + " days";
       } catch (error) {
-        console.log(error);
+        console.error(error);
+        correct = false;
+        message = error.toString();
       }
     }
 
@@ -185,12 +191,26 @@ export default function Form() {
         const respoonse = await postData("/createRecord", state);
       } catch (error) {
         console.error(error);
+        correct = false;
+        message = error.toString();
       }
     }
 
+    await makePredict();
+    await createRecord();
+
+    const popupChildren = (
+      <div className="popup-main">
+        <img className="icon" src={correct ? "images/correct.png" : "images/error.png"} />
+        <p className="result">{message}</p>
+        <button className="ok" onClick={() => dispatch(toggle())}>
+          Aceptar
+        </button>
+      </div>
+    );
+
     dispatch(toggle());
-    makePredict();
-    createRecord();
+    dispatch(setChildren(popupChildren));
   };
 
   const handleName = (e) => {
