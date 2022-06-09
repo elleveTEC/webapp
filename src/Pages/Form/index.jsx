@@ -1,14 +1,17 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setPage } from "../../features/pageIndicator/pageIndicatorSlice";
 import MainForm from "../../components/form/form.jsx";
-import TopBar from "../../components/header/header.jsx";
-import Sidebar from "../../components/sidebar/sidebar.jsx";
+import Page from "../../components/page/page.jsx";
 
 export default function Form() {
+  const dispatch = useDispatch();
+
+  dispatch(setPage("calculate"));
+
   return (
-    <div>
-      <TopBar />
-      <Sidebar active="calculate" />
+    <Page>
       <MainForm />
-    </div>
+    </Page>
   );
 }
