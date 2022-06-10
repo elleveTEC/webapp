@@ -84,9 +84,15 @@ export default function Profile() {
   const handleClick = () => {
     const popupChildren = (
       <div className="popup-main">
+        <h2>Change password</h2>
         <form className="password-form">
           <label for="new-password">New password</label>
-          <input id="new-password" name="newPassword" type="password" placeholder="New password" />
+          <input
+            id="new-password"
+            name="newPassword"
+            type="password"
+            placeholder="Enter a new password"
+          />
           <label for="confirm-new-password">Confirm your new password</label>
           <input
             id="confirm-new-password"
@@ -94,10 +100,18 @@ export default function Profile() {
             type="password"
             placeholder="Confirm your new password"
           />
-          <input id="myButton" type="submit" value="Change password" onClick={handleFormSubmit} />
-          <button id="cancel" onClick={() => dispatch(toggle())}>
-            Cancel
-          </button>
+          <div className="row buttons">
+            <button id="cancel" onClick={() => dispatch(toggle())}>
+              Cancel
+            </button>
+            <input
+              className="ok change-password"
+              id="myButton"
+              type="submit"
+              value="Change password"
+              onClick={handleFormSubmit}
+            />
+          </div>
         </form>
       </div>
     );
