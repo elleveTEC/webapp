@@ -91,3 +91,33 @@
 .popup .popup-main .password-form .buttons {
   margin-top: 20px;
 }
+
+/* details */
+
+.popup .popup-main .details {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+}
+
+.popup .popup-main .details .gray-line {
+  height: 0px;
+  width: 100%;
+  border: 1px solid rgba(208, 208, 215, 1);
+  /* background-color: rgba(208, 208, 215, 1); */
+}
+
+.popup .popup-main .details .row {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.popup .popup-main .details .close {
+  color: #02A4FF;
+  font-size: 4em;
+  position: absolute;
+  top: 10px;
+  right: 50px;
+}
