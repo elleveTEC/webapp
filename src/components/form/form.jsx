@@ -2,6 +2,7 @@ import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggle, setChildren } from "../../features/opener/openerSlice";
 import * as tf from "@tensorflow/tfjs";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import "./form.css";
 
@@ -164,10 +165,18 @@ export default function Form() {
   }, [state]);
 
   const handleClick = async (event) => {
-
     event.preventDefault();
     let correct = true;
     let message = "";
+    var popupChildren = (
+      <div className="popup-main">
+        <CircularProgress className="icon" />
+        <p className="result">Calculating ...</p>
+      </div>
+    );
+
+    dispatch(toggle());
+    dispatch(setChildren(popupChildren));
 
     async function makePredict() {
       const id = localStorage.getItem("UsuarioID");
@@ -199,7 +208,7 @@ export default function Form() {
     await makePredict();
     await createRecord();
 
-    const popupChildren = (
+    popupChildren = (
       <div className="popup-main">
         <img className="icon" src={correct ? "images/correct.png" : "images/error.png"} />
         <p className="result">{message}</p>
@@ -209,7 +218,6 @@ export default function Form() {
       </div>
     );
 
-    dispatch(toggle());
     dispatch(setChildren(popupChildren));
   };
 
