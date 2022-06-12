@@ -120,34 +120,17 @@ function top_words(tokens, words) {
   }
 }
 
-function getPrediction() {
-  const sum = document.getElementById("summary").value.toLowerCase();
-  const desc = document.getElementById("description").value.toLowerCase();
-  var sum_token = processToken(sum);
-  var desc_token = processToken(desc);
-  sum_token = top_words(sum_token, 5);
-  desc_token = top_words(desc_token, 20);
-  const predict_token = sum_token.concat(desc_token);
-
-  if (modelo != null) {
-    var tensor = tf.tensor2d([predict_token]);
-    var prediccion = modelo.predict(tensor).dataSync();
-    prediccion = Math.round(prediccion);
-    console.log(prediccion);
-  }
-}
-
-function processToken(text){
+function processToken(text) {
   var token = [];
   const array = text.match(/\w+/g);
-  for(var i = 0; i < del_words.length; i++){
-    while (array.includes(del_words[i])){
+  for (var i = 0; i < del_words.length; i++) {
+    while (array.includes(del_words[i])) {
       const idx = array.indexOf(del_words[i]);
-      array.splice(idx,1);
+      array.splice(idx, 1);
     }
   }
-  for(var i = 0; i < array.length; i++){
-    if (!dict.has(array[i])){
+  for (var i = 0; i < array.length; i++) {
+    if (!dict.has(array[i])) {
       dict.set(array[i], dict.size + 1);
     }
     token[i] = dict.get(array[i]);
@@ -156,7 +139,6 @@ function processToken(text){
 }
 
 export default function Form() {
-    
   const [state, setState] = useState({
     UsuarioID: localStorage.getItem("UsuarioID"),
     Fecha_Calculo: getSQLDate(Date.now()),
@@ -172,15 +154,6 @@ export default function Form() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const myButton = document.getElementById("myButton");
-
-    myButton.addEventListener("click", (e) => {
-      getPrediction();
-      e.preventDefault();
-    });
-  }, []);
-
-  useEffect(() => {
     const btn = document.getElementById("myButton");
 
     if (state.Resumen.length >= 10 && state.Descripcion.length >= 10) {
@@ -192,8 +165,32 @@ export default function Form() {
     }
   }, [state]);
 
-  const toggleModal = () => {
+  const handleClick = () => {
+    async function makePredict() {
+      const id = localStorage.getItem("UsuarioID");
+      try {
+        const response = await postData("/prediccion", {
+          Sum: state.Resumen,
+          Desc: state.Descripcion,
+        });
+        const prediccion = response.prediccion.prediccion;
+        console.log(prediccion);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+
+    async function createRecord() {
+      try {
+        const respoonse = await postData("/createRecord", state);
+      } catch (error) {
+        console.error(error);
+      }
+    }
+
     dispatch(toggle());
+    makePredict();
+    createRecord();
   };
 
   const handleName = (e) => {
@@ -224,15 +221,10 @@ export default function Form() {
     });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    postData("/createRecord", state);
-  };
-
   return (
     <div className="form">
       <h1>Effort prediction</h1>
-      <form className="main-form" onSubmit={handleSubmit}>
+      <form className="main-form">
         <div className="row-dual">
           <div className="col-dual">
             <label htmlFor="story-name">Task name</label>
@@ -279,7 +271,7 @@ export default function Form() {
             />
           </div>
         </div>
-        <input id="myButton" type="submit" value="Calculate" onClick={toggleModal} />
+        <input id="myButton" type="submit" value="Calculate" onClick={handleClick} />
       </form>
     </div>
   );
