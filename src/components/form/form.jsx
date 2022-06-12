@@ -5,6 +5,18 @@ import CircularProgress from "@mui/material/CircularProgress";
 
 import "./form.css";
 
+Date.prototype.addDays = function (days) {
+  var date = new Date(this.valueOf());
+  date.setDate(date.getDate() + days);
+  return date;
+};
+
+function SQLDateToDate(sqlDate) {
+  var dateParts = sqlDate.split("-");
+  var jsDate = new Date(dateParts[0], dateParts[1] - 1, dateParts[2].substr(0, 2));
+  return jsDate;
+}
+
 function getSQLDate(date) {
   var pad = function (num) {
     return ("00" + num).slice(-2);
@@ -87,6 +99,8 @@ export default function Form() {
     dispatch(toggle());
     dispatch(setChildren(popupChildren));
 
+    var prediction = null;
+
     async function makePredict() {
       const id = localStorage.getItem("UsuarioID");
       try {
@@ -94,9 +108,14 @@ export default function Form() {
           Sum: state.Resumen,
           Desc: state.Descripcion,
         });
-        const prediction = response.prediccion.prediccion;
+        prediction = response.prediccion.prediccion;
         console.log(prediction);
         message = "Estimated time: " + prediction + " days";
+        setState({
+          ...state,
+          Fecha_Fin: SQLDateToDate(state.Fecha_Inicio).addDays(prediction),
+          Dias: prediction,
+        });
       } catch (error) {
         console.error(error);
         correct = false;
@@ -106,7 +125,11 @@ export default function Form() {
 
     async function createRecord() {
       try {
-        const respoonse = await postData("/createRecord", state);
+        const respoonse = await postData("/createRecord", {
+          ...state,
+          Fecha_Fin: SQLDateToDate(state.Fecha_Inicio).addDays(prediction),
+          Dias: prediction,
+        });
       } catch (error) {
         console.error(error);
         correct = false;
@@ -129,7 +152,7 @@ export default function Form() {
 
     dispatch(setChildren(popupChildren));
     const fields = document.querySelectorAll(".field");
-    fields.forEach( (field) => field.value="");
+    fields.forEach((field) => (field.value = ""));
   };
 
   const handleName = (e) => {
