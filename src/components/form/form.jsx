@@ -1,43 +1,9 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggle, setChildren } from "../../features/opener/openerSlice";
-import * as tf from "@tensorflow/tfjs";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import "./form.css";
-
-var modelo = null;
-const dict = new Map();
-const del_words = [
-  "in",
-  "the",
-  "a",
-  "to",
-  "from",
-  "be",
-  "on",
-  "an",
-  "as",
-  "of",
-  "is",
-  "it",
-  "that",
-  "this",
-  "or",
-  "and",
-  "I",
-  "he",
-  "she",
-  "they",
-  "them",
-  "us",
-];
-
-(async () => {
-  console.log("Cargando modelo...");
-  modelo = await tf.loadLayersModel("http://127.0.0.1:8080/model.json");
-  console.log("Modelo cargado...");
-})();
 
 function getSQLDate(date) {
   var pad = function (num) {
@@ -78,63 +44,6 @@ async function postData(url = "", data = {}) {
     return response.json(); // parses JSON response into native JavaScript objects
   } finally {
   }
-}
-
-function top_words(tokens, words) {
-  var valores = [];
-  var conteos = [];
-  for (var i = 0; i < tokens.length; i++) {
-    if (valores.indexOf(tokens[i]) == -1) {
-      valores.push(tokens[i]);
-      conteos.push(1);
-    } else {
-      conteos[valores.indexOf(tokens[i])]++;
-    }
-  }
-  var n_words = 0;
-  if (tokens.length > words) {
-    var aux = [];
-    if (conteos.length >= words) {
-      n_words = words;
-    } else {
-      n_words = conteos.length;
-    }
-    for (var i = 0; i < n_words; i++) {
-      const max_cont = Math.max(...conteos);
-      const max_index = conteos.indexOf(max_cont);
-      aux.push(valores[max_index]);
-      valores.splice(max_index, 1);
-      conteos.splice(max_index, 1);
-    }
-    tokens = aux;
-  }
-  if (tokens.length < words) {
-    const dif = words - tokens.length;
-    for (var i = 0; i < dif; i++) {
-      tokens.push(0);
-    }
-    return tokens;
-  } else {
-    return tokens;
-  }
-}
-
-function processToken(text) {
-  var token = [];
-  const array = text.match(/\w+/g);
-  for (var i = 0; i < del_words.length; i++) {
-    while (array.includes(del_words[i])) {
-      const idx = array.indexOf(del_words[i]);
-      array.splice(idx, 1);
-    }
-  }
-  for (var i = 0; i < array.length; i++) {
-    if (!dict.has(array[i])) {
-      dict.set(array[i], dict.size + 1);
-    }
-    token[i] = dict.get(array[i]);
-  }
-  return token;
 }
 
 export default function Form() {
@@ -206,8 +115,7 @@ export default function Form() {
     }
 
     await makePredict();
-    await createRecord();
-
+    
     popupChildren = (
       <div className="popup-main">
         <img className="icon" src={correct ? "images/correct.png" : "images/error.png"} />
@@ -219,6 +127,7 @@ export default function Form() {
     );
 
     dispatch(setChildren(popupChildren));
+    await createRecord();
   };
 
   const handleName = (e) => {
