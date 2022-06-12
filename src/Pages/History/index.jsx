@@ -31,15 +31,15 @@ export default function History() {
   
   dispatch(setPage("history"));
 
-  const search = (e) => {
-    console.log("serachig for: " + searchValue);
+  const search = () => {
     setStories(
-      res.filter((story) => story.Resumen.toLowerCase().includes(searchValue.toLowerCase()))
+      res.filter((story) => story.Nombre_Actividad.toLowerCase().includes(searchValue.toLowerCase()))
     );
   }
 
   const onChange = (e) => {
     setSearchValue (e.target.value);
+    search();
   }
 
   return (
@@ -47,7 +47,6 @@ export default function History() {
       <div className="history">
         <h1>History</h1>
         <input type="text" id="search" name="search" placeholder="Search task by something" onChange={onChange} />
-        <button onClick={search}>Search</button>
         <Link className="new-prediction" to="/">+ New prediction</Link>
         <HistoryTable stories={stories} />
       </div>
