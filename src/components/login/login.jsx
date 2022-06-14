@@ -30,7 +30,7 @@ export default function LoginForm() {
   const [forgot, setForgot] = useState(false);
   const [failed, setFailed] = useState(false);
   const [state, setState] = useState({
-    usename: "",
+    username: "",
     password: "",
   });
   const auth = useAuth();
