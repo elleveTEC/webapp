@@ -8,6 +8,8 @@ import "./index.css";
 
 export default function History() {
 
+  const dispatch = useDispatch();
+  
   const [stories, setStories] = useState([]);
   const [res, setRes] = useState(null);
   const [searchValue, setSearchValue] = useState("");
@@ -25,11 +27,8 @@ export default function History() {
       }
     }
     fetchStories();
+    dispatch(setPage("history"));
   }, []);
-
-  const dispatch = useDispatch();
-  
-  dispatch(setPage("history"));
 
   const search = () => {
     setStories(
