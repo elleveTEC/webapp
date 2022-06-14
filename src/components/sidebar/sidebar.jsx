@@ -1,10 +1,12 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom"
-import MaterialIcon, { colorPalette } from "material-icons-react";
+import MaterialIcon from "material-icons-react";
 import "./sidebar.css";
 
-export default function Sidebar(props) {
-  const { active } = props;
+export default function Sidebar() {
+
+  const active = useSelector( state => state.pageIndicator.page );
 
   return (
     <div className="sidebar">
