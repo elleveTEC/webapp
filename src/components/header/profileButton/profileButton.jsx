@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../utils/auth/auth";
 import "./profileButton.css";
 
 export default function ProfileButton() {
   const [state, setState] = useState({
     active: false,
   });
+  const auth = useAuth();
   const initials = "CG";
   return (
     <>
@@ -22,7 +24,7 @@ export default function ProfileButton() {
             <p className="email">user@cemex.com</p>
           </div>
           <Link to="/profile" className="button">Account settings</Link>
-          <Link to="/login" className="button">Sign out</Link>
+          <Link to="/login" className="button" onClick={() => auth.logout()}>Sign out</Link>
         </div>
       ) : (
         ""
