@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth } from "../../utils/auth/auth";
 
 import "./login.css";
 
@@ -32,6 +33,7 @@ export default function LoginForm() {
     usename: "",
     password: "",
   });
+  const auth = useAuth();
 
   const handleClick = () => {
     setForgot((forgot) => !forgot);
@@ -63,7 +65,7 @@ export default function LoginForm() {
       console.log(error);
     }
     if (response != null) {
-      localStorage.setItem('UsuarioID', response[0].UsuarioID);
+      auth.login(response[0].UsuarioID);
       window.location.href = "/";
     } else {
       setFailed(true);
