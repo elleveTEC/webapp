@@ -30,5 +30,6 @@
 
 .history-table tbody td.details {
   color: #3FA9F5;
+  cursor: pointer;
 }
 
