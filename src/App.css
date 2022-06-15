@@ -28,6 +28,24 @@
   color: #61dafb;
 }
 
+* {
+  font-size: 2vh;
+}
+
+h1 {
+  font-size: 4vh;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 3vh;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 2vh;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
