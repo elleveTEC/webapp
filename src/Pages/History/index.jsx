@@ -12,7 +12,7 @@ export default function History() {
   
   const [stories, setStories] = useState([]);
   const [res, setRes] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     async function fetchStories() {
@@ -30,15 +30,15 @@ export default function History() {
     dispatch(setPage("history"));
   }, []);
 
-  const search = () => {
+  useEffect (() => {
+    if (!res) return;
     setStories(
-      res.filter((story) => story.Nombre_Actividad.toLowerCase().includes(searchValue.toLowerCase()))
+      res.filter((story) => story.Nombre_Actividad.toLowerCase().includes(search.toLowerCase()))
     );
-  }
+  }, [res, search]);
 
   const onChange = (e) => {
-    setSearchValue (e.target.value);
-    search();
+    setSearch(e.target.value);
   }
 
   return (
