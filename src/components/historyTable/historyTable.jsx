@@ -14,7 +14,7 @@ export default function HistoryTable(props) {
     const story = stories[parseInt(e.target.id)];
     const popupChildren = (
       <div className="popup-main">
-        <h2 className="prediction-header">Prediccion #{story.RegistroID}</h2>
+        <h2 className="prediction-header">Prediction #{story.RegistroID}</h2>
         <div className="gray-line"></div>
         <div className="details">
           <div className="field">

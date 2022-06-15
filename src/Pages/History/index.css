@@ -15,9 +15,6 @@
   background: url("http://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left no-repeat;
 }
 
-.history h1 {
-}
-
 .history .new-prediction {
   display: inline-block;
   height: 30px;
@@ -26,7 +23,6 @@
   border: none;
   border-radius: 3px;
   color: white;
-  font-size: 1em;
   font-weight: bold;
   text-decoration: none;
   text-align: center;
