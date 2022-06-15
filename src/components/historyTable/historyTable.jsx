@@ -14,9 +14,9 @@ export default function HistoryTable(props) {
     const story = stories[parseInt(e.target.id)];
     const popupChildren = (
       <div className="popup-main">
-        <h2>Prediccion #{story.RegistroID}</h2>
-        <div className="details">
+        <h2 className="prediction-header">Prediccion #{story.RegistroID}</h2>
         <div className="gray-line"></div>
+        <div className="details">
           <div className="field">
             <h3>Name of the task</h3>
             <p>{story.Nombre_Actividad}</p>
@@ -28,7 +28,9 @@ export default function HistoryTable(props) {
             </div>
             <div className="field">
               <h3>Estimated completion</h3>
-              <p>{toISODate(story.Fecha_Fin)} ({story.Dias} days)</p>
+              <p>
+                {toISODate(story.Fecha_Fin)} ({story.Dias} days)
+              </p>
             </div>
           </div>
           <div className="field">
@@ -39,7 +41,9 @@ export default function HistoryTable(props) {
             <h3>Description</h3>
             <p>{story.Descripcion}</p>
           </div>
-        <div className="close" onClick={() => dispatch(toggle())}>&times;</div>
+          <div className="close" onClick={() => dispatch(toggle())}>
+            &times;
+          </div>
         </div>
       </div>
     );
