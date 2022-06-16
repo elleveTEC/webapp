@@ -40,3 +40,54 @@
   color: white;
   border: none;
 }
+
+/* form */
+
+.popup .popup-main .password-form {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-flow: wrap column;
+}
+
+.popup .popup-main .password-form label {
+  height: 10%;
+}
+
+.popup .popup-main .password-form input {
+  height: 15%;
+  margin-bottom: 20px;
+}
+
+.popup .popup-main .row {
+  flex: 0 0 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.popup .popup-main .password-form .change-password, .popup .popup-main .password-form #cancel {
+  width: 45%;
+  border-radius: 5px;
+  height: 100%;
+  font-size: 1em;
+  font-weight: bolder;
+}
+
+.popup .popup-main .password-form .change-password {
+  background-color: #02A4FF;
+  margin-bottom: 0px;
+}
+
+.popup .popup-main #cancel {
+  border: solid 1px #02A4FF;
+  background-color: white;
+  color: #02A4FF;
+}
+
+.popup .popup-main .password-form .buttons {
+  margin-top: 20px;
+}
