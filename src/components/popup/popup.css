@@ -124,6 +124,7 @@
 .popup .popup-main .details .field h3, 
 .popup .popup-main .details .field p {
   margin: 5px;
+  line-height: 3vh;
 }
 
 .popup .popup-main .details .row {

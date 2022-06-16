@@ -137,9 +137,11 @@ export default function Profile() {
           </div>
           <div className="gray-line"></div>
           <div className="password-container">
-            <h2>Password</h2>
+            <div>
+              <h2>Password</h2>
+              <div className="password">{new Array(data.Contrasena.length + 1).join("*")}</div>
+            </div>
             <button onClick={handleClick}>Change password</button>
-            <div className="password">{new Array(data.Contrasena.length + 1).join("*")}</div>
           </div>
         </div>
       </div>
