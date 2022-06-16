@@ -1,43 +1,9 @@
 import { React, useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { toggle, setChildren } from "../../features/opener/openerSlice";
-import * as tf from "@tensorflow/tfjs";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import "./form.css";
-
-var modelo = null;
-const dict = new Map();
-const del_words = [
-  "in",
-  "the",
-  "a",
-  "to",
-  "from",
-  "be",
-  "on",
-  "an",
-  "as",
-  "of",
-  "is",
-  "it",
-  "that",
-  "this",
-  "or",
-  "and",
-  "I",
-  "he",
-  "she",
-  "they",
-  "them",
-  "us",
-];
-
-(async () => {
-  console.log("Cargando modelo...");
-  modelo = await tf.loadLayersModel("http://127.0.0.1:8080/model.json");
-  console.log("Modelo cargado...");
-})();
 
 function getSQLDate(date) {
   var pad = function (num) {
@@ -80,63 +46,6 @@ async function postData(url = "", data = {}) {
   }
 }
 
-function top_words(tokens, words) {
-  var valores = [];
-  var conteos = [];
-  for (var i = 0; i < tokens.length; i++) {
-    if (valores.indexOf(tokens[i]) == -1) {
-      valores.push(tokens[i]);
-      conteos.push(1);
-    } else {
-      conteos[valores.indexOf(tokens[i])]++;
-    }
-  }
-  var n_words = 0;
-  if (tokens.length > words) {
-    var aux = [];
-    if (conteos.length >= words) {
-      n_words = words;
-    } else {
-      n_words = conteos.length;
-    }
-    for (var i = 0; i < n_words; i++) {
-      const max_cont = Math.max(...conteos);
-      const max_index = conteos.indexOf(max_cont);
-      aux.push(valores[max_index]);
-      valores.splice(max_index, 1);
-      conteos.splice(max_index, 1);
-    }
-    tokens = aux;
-  }
-  if (tokens.length < words) {
-    const dif = words - tokens.length;
-    for (var i = 0; i < dif; i++) {
-      tokens.push(0);
-    }
-    return tokens;
-  } else {
-    return tokens;
-  }
-}
-
-function processToken(text) {
-  var token = [];
-  const array = text.match(/\w+/g);
-  for (var i = 0; i < del_words.length; i++) {
-    while (array.includes(del_words[i])) {
-      const idx = array.indexOf(del_words[i]);
-      array.splice(idx, 1);
-    }
-  }
-  for (var i = 0; i < array.length; i++) {
-    if (!dict.has(array[i])) {
-      dict.set(array[i], dict.size + 1);
-    }
-    token[i] = dict.get(array[i]);
-  }
-  return token;
-}
-
 export default function Form() {
   const [state, setState] = useState({
     UsuarioID: localStorage.getItem("UsuarioID"),
@@ -164,8 +73,8 @@ export default function Form() {
     }
   }, [state]);
 
-  const handleClick = async (event) => {
-    event.preventDefault();
+  const onSubmit = async (e) => {
+    e.preventDefault();
     let correct = true;
     let message = "";
     var popupChildren = (
@@ -219,6 +128,8 @@ export default function Form() {
     );
 
     dispatch(setChildren(popupChildren));
+    const fields = document.querySelectorAll(".field");
+    fields.forEach( (field) => field.value="");
   };
 
   const handleName = (e) => {
@@ -252,16 +163,18 @@ export default function Form() {
   return (
     <div className="form">
       <h1>Effort prediction</h1>
-      <form className="main-form">
+      <form className="main-form" onSubmit={onSubmit}>
         <div className="row-dual">
           <div className="col-dual">
             <label htmlFor="story-name">Task name</label>
             <input
               type="text"
               id="story-name"
+              className="field"
               name="story-name"
               onChange={handleName}
               placeholder="Name of the story"
+              required
             />
           </div>
           <div className="col-dual">
@@ -269,6 +182,7 @@ export default function Form() {
             <input
               type="date"
               id="starting-date"
+              className="field"
               name="starting-date"
               onChange={handleDate}
               required
@@ -280,10 +194,12 @@ export default function Form() {
             <label htmlFor="summary">User story summary</label>
             <textarea
               id="summary"
+              className="field"
               type="text"
               name="summary"
               placeholder="Summary"
               onChange={handleSummary}
+              required
             />
           </div>
         </div>
@@ -292,14 +208,16 @@ export default function Form() {
             <label htmlFor="description">User story description</label>
             <textarea
               id="description"
+              className="field"
               type="text"
               name="description"
               placeholder="Description"
               onChange={handleDescription}
+              required
             />
           </div>
         </div>
-        <input id="myButton" type="submit" value="Calculate" onClick={handleClick} />
+        <input id="myButton" type="submit" value="Calculate" />
       </form>
     </div>
   );

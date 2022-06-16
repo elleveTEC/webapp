@@ -9,6 +9,8 @@ import "./index.css";
 export default function History() {
 
   const [stories, setStories] = useState([]);
+  const [res, setRes] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     async function fetchStories() {
@@ -16,6 +18,7 @@ export default function History() {
       try {
         const response = await fetch(`/getRecordUser/${id}`);
         const data = await response.json();
+        setRes(data);
         setStories(data);
       } catch (error) {
         console.error(error);
@@ -28,11 +31,23 @@ export default function History() {
   
   dispatch(setPage("history"));
 
+  const search = (e) => {
+    console.log("serachig for: " + searchValue);
+    setStories(
+      res.filter((story) => story.Resumen.toLowerCase().includes(searchValue.toLowerCase()))
+    );
+  }
+
+  const onChange = (e) => {
+    setSearchValue (e.target.value);
+  }
+
   return (
     <Page>
       <div className="history">
         <h1>History</h1>
-        <input type="text" id="search" name="search" placeholder="Search task by something" />
+        <input type="text" id="search" name="search" placeholder="Search task by something" onChange={onChange} />
+        <button onClick={search}>Search</button>
         <Link className="new-prediction" to="/">+ New prediction</Link>
         <HistoryTable stories={stories} />
       </div>
