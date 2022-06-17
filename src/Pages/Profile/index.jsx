@@ -37,7 +37,9 @@ export default function Profile() {
 
   const dispatch = useDispatch();
 
-  dispatch(setPage("profile"));
+  useEffect(() => {
+    dispatch(setPage("profile"));
+  }, []);
 
   useEffect(() => {
     const userId = localStorage.getItem("UsuarioID");
@@ -67,7 +69,7 @@ export default function Profile() {
     const userId = localStorage.getItem("UsuarioID");
 
     try {
-      await postData(`/updateUserById/:${data.Correo}/:${data.Contrasena}`, {
+      await postData(`/updateUserById/${data.Correo}/${data.Contrasena}`, {
         NuevaContrasena: newPassword,
       });
       setData({
@@ -85,14 +87,14 @@ export default function Profile() {
       <div className="popup-main">
         <h2>Change password</h2>
         <form className="password-form">
-          <label for="new-password">New password</label>
+          <label htmlFor="new-password">New password</label>
           <input
             id="new-password"
             name="newPassword"
             type="password"
             placeholder="Enter a new password"
           />
-          <label for="confirm-new-password">Confirm your new password</label>
+          <label htmlFor="confirm-new-password">Confirm your new password</label>
           <input
             id="confirm-new-password"
             name="confirmNewPassword"
