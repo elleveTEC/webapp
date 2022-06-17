@@ -40,6 +40,7 @@
   border-radius: 5px;
   color: white;
   border: none;
+  cursor: pointer;
 }
 
 /* form */
@@ -50,7 +51,7 @@
   width: 100%;
   padding: 50px;
   display: flex;
-  flex-flow: wrap column;
+  flex-flow: nowrap column;
 }
 
 .popup .popup-main .password-form label {
@@ -86,6 +87,7 @@
   border: solid 1px #02A4FF;
   background-color: white;
   color: #02A4FF;
+  cursor: pointer;
 }
 
 .popup .popup-main .password-form .buttons {
@@ -106,8 +108,8 @@
   overflow-y: auto;
   display: flex;
   flex-direction: column;
-  justify-content: start;
-  align-items: start;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .popup .popup-main .gray-line {
