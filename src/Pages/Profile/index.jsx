@@ -55,6 +55,10 @@ export default function Profile() {
     fillData();
   }, []);
 
+  useEffect(() => {
+    console.log("new state");
+  }, [data]);
+
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
@@ -77,6 +81,7 @@ export default function Profile() {
         Contrasena: newPassword,
       });
     } catch (error) {
+      console.log("this catch");
       console.error(error);
     }
     dispatch(toggle());
