@@ -1,0 +1,105 @@
+.form {
+  width: 60%;
+
+  margin: 0 auto;
+}
+
+.form h1 {
+  text-align: left;
+  margin: 150px 0 20px 0;
+  /* color: #004EA5;  */
+}
+
+.main-form {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  flex-direction: column;
+  width: 100%;
+}
+
+.main-form .row {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.main-form .row-dual {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+
+.main-form textarea {
+  width: 100%; 
+}
+
+
+.main-form .row-dual .col-dual {
+  flex: 0 0 45%;
+  /* width: 50%; */
+  display: flex;
+  flex-direction: column;
+}
+
+.main-form textarea, .main-form input {
+  border: 1px solid #C3C3C3;
+  border-radius: 4px;
+  font-family: 'Roboto';
+  resize: vertical;
+  padding: 5px;
+}
+
+.main-form input[type="text"], .main-form textarea[type="text"]  {
+  padding: 10px;
+}
+
+#summary {
+  height: 7vh;
+  max-height: 15vh;
+}
+
+#description {
+  height: 20vh;
+  max-height: 40vh;
+}
+
+input[type="date"]:invalid::-webkit-datetime-edit {
+  color: #6d6d6d;
+}
+#starting-date{
+  padding: 10px;
+  color:black
+}
+
+.main-form textarea {
+  height: 75px;
+  width: 100%; 
+  margin: 10px 0px 0px;
+}
+
+.main-form input {
+  height: 30px;
+}
+
+.main-form label {
+  margin-bottom: 10px;
+}
+
+.main-form > label {
+  position: relative;
+  left: -50%;
+  transform: translate(50%, 0);
+}
+
+.main-form input[type="submit"] {
+  flex: 0 0 35px;
+  width: 20%;
+  background-color: #D0D0D7;
+  border: 1px solid #C3C3C3;
+  color: white;
+  font-weight: 700;
+}
+
+

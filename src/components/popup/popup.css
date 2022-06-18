@@ -1,0 +1,146 @@
+.popup {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.popup .popup-main {
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 50%;
+  width: 45%;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.popup .popup-main .icon {
+  /* margin-top: 10%; */
+  margin-bottom: 5%;
+  max-height: 20%;
+  width: auto;
+}
+
+.popup .popup-main .result {
+  margin-bottom: 5%;
+}
+
+.popup .popup-main .ok {
+  height: 10%;
+  width: 10%;
+  background-color: #02A4FF;
+  border-radius: 5px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* form */
+
+.popup .popup-main .password-form {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  flex-flow: nowrap column;
+}
+
+.popup .popup-main .password-form label {
+  height: 10%;
+}
+
+.popup .popup-main .password-form input {
+  height: 15%;
+  margin-bottom: 20px;
+}
+
+.popup .popup-main .row {
+  flex: 0 0 15%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.popup .popup-main .password-form .change-password, .popup .popup-main .password-form #cancel {
+  width: 45%;
+  border-radius: 5px;
+  height: 100%;
+  font-weight: bolder;
+}
+
+.popup .popup-main .password-form .change-password {
+  background-color: #02A4FF;
+  margin-bottom: 0px;
+}
+
+.popup .popup-main #cancel {
+  border: solid 1px #02A4FF;
+  background-color: white;
+  color: #02A4FF;
+  cursor: pointer;
+}
+
+.popup .popup-main .password-form .buttons {
+  margin-top: 20px;
+}
+
+/* details */
+
+
+.popup .popup-main .prediction-header {
+  width: 100%;
+  text-align: left;
+}
+
+.popup .popup-main .details {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.popup .popup-main .gray-line {
+  height: 0px;
+  width: 100%;
+  border: 1px solid rgba(208, 208, 215, 1);
+}
+
+.popup .popup-main .details > .field {
+  flex: 1 1 25%;
+  margin: 10px 0;
+}
+
+.popup .popup-main .details .field h3, 
+.popup .popup-main .details .field p {
+  margin: 5px;
+  line-height: 3vh;
+}
+
+.popup .popup-main .details .row {
+  display: flex;
+  justify-content: space-between;
+  flex: 1 1 25%;
+  margin: 10px 0;
+}
+
+.popup .popup-main .details .close {
+  color: #02A4FF;
+  font-size: 4em;
+  position: absolute;
+  top: 10px;
+  right: 50px;
+  cursor: pointer;
+}

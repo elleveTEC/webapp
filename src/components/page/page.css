@@ -1,0 +1,15 @@
+.page {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.page .main-content {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - 94px);
+  width: calc(100% - 100px);
+  overflow-y: scroll;
+}

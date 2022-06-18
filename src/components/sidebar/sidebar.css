@@ -1,0 +1,17 @@
+.sidebar {
+  background-color: white;
+  border-right: 1px solid #D0D0D7; 
+  height: calc(100% - 94px);
+  width: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-flow: wrap column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar svg {
+  margin: 20% 0;
+}

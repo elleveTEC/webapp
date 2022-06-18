@@ -1,0 +1,31 @@
+.history {
+  width: 80%;
+  margin: 50px auto;
+  display: flex;
+  flex-flow: wrap row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history #search {
+  height: 30px;
+  border: solid 2px #d0d0d7;
+  border-radius: 3px;
+  width: 30%;
+  background: url("http://kodyrabatowe.wp.pl/img/ico/search_gr.png") top left no-repeat;
+}
+
+.history .new-prediction {
+  display: inline-block;
+  height: 30px;
+  width: 200px;
+  background-color: #3FA9F5;
+  border: none;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  line-height: 30px;
+  vertical-align: middle;
+}
