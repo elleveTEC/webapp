@@ -13,36 +13,60 @@ It looks forward to optimize the scheduling and estimation of times.
 
 ## Features
 
-| Key Feature                                              | Status           |
-| -------------------------------------------------------- | ---------------- |
-| Login                                                    | Complete         |
-| Effort prediction                                        | Complete         |
-| Record                                                   | Complete         |
-| Profile                                                  | Complete         |
+| Key Feature       | Status   |
+| ----------------- | -------- |
+| Login             | Complete |
+| Effort prediction | Complete |
+| Record            | Complete |
+| Profile           | Complete |
 
 ## Running the Project
 
 This project has a backend server that can be found in the following link and has to be runned together with this project.
+
 > Live Link: https://github.com/elleveTEC/API
 
 ### Steps
-1. Clone this repository. 
-2. Serve model files.
-http-server ./src/model/
-3. Install dependencies. 
-    npm install
-4. Run the app.
-    npm start
 
-> Live Link: https://github.com/elleveTEC/webapp
+1. Clone this repository.
+
+   > Live Link: https://github.com/elleveTEC/webapp
+
+2. cd to the project folder.
+
+```
+    cd webapp
+```
+
+3. Install dependencies.
+
+```
+    npm install
+```
+
+4. Run the app.
+
+```
+    npm start
+```
+
+5. Press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>N</kbd> to open a new terminal and run the following command in order to serve model files in port 8080.
+
+```
+    http-server ./src/model/
+```
 
 ## Languages
 
 - HTML
 - CSS
 - Javascript
+- JSX
 
 ## Dependencies
 
 - http-server
 - ReactJS
+- TensorFlow
+- Redux
+- React Router
