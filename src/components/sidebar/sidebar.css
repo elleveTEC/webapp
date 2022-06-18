@@ -12,6 +12,6 @@
   align-items: center;
 }
 
-.sidebar .material-icons {
-  margin: 10px;
+.sidebar svg {
+  margin: 20% 0;
 }
