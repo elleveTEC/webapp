@@ -88,6 +88,7 @@ export default function LoginForm() {
               value={state.username}
               onChange={handleUsername}
               placeholder="Enter your username"
+              required
             />
             <label html="password">Password</label>
             <input
@@ -97,6 +98,7 @@ export default function LoginForm() {
               placeholder="Enter your password"
               value={state.password}
               onChange={handlePassword}
+              required
             />
             <p id="forgot-password" onClick={handleClick}>
               Forgot your password?

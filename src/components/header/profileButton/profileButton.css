@@ -5,12 +5,12 @@
   transform: translate(0, -50%);
   height: 55px;
   width: 55px;
-  font-size: 1.5rem;
   background-color: white;
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .pop-up {
@@ -30,7 +30,6 @@
 .pop-up .initials {
   flex: 0 0 55px;
   width: 55px;
-  font-size: 1.5rem;
   background-color: #001B3A;
   border-radius: 50%;
   color: white;
@@ -38,6 +37,7 @@
   justify-content: center;
   align-items: center;
   margin: 10px 0 0 0;
+  cursor: pointer;
 }
 
 .pop-up .data {
@@ -46,7 +46,6 @@
 
 .pop-up .data p {
   /* flex: 2 2 fit-content; */
-  font-size: 1rem;
   margin: 0;
   text-align: center;
 }
@@ -63,7 +62,6 @@
   width: 100%;
   color: #3FA9F5;
   font-weight: 500;
-  font-size: 1rem;
   padding: 10px;
   cursor: pointer;
   text-align: center;
