@@ -67,9 +67,8 @@ export default function Profile() {
     const userId = localStorage.getItem("UsuarioID");
 
     try {
-      await postData(`/updateUserById/${userId}`, {
-        UsuarioID: userId,
-        Contrasena: newPassword,
+      await postData(`/updateUserById/:${data.Correo}/:${data.Contrasena}`, {
+        NuevaContrasena: newPassword,
       });
       setData({
         ...data,
