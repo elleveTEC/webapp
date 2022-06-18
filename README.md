@@ -8,8 +8,8 @@ A model based on user stories obtained from the Cemex Go app through JIRA, which
 
 ## Overview
 
-The main purpose of this application is to be able to obtain a prediction of the effort in number of days necessary to fulfill different user stories. This, through a web application.
-It looks forward to optimize the scheduling and estimation of times.
+The main purpose of this application is to be able to obtain an effort prediction in number of days necessary to fulfill different user stories, through a web application.
+It looks forward to optimize the scheduling and estimation of times related to the development of CEMEX Go.
 
 ## Features
 
